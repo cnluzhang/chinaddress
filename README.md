@@ -14,4 +14,4 @@ $ npm test
 ```
 
 ## License
-** ISC License (ISC) **
+**ISC License (ISC)**
