@@ -2,15 +2,10 @@
 ===========
 任何修改后，都请将你的名字添加在Editors.json里，作为整理者之一。
 
-## 如何生成
+## 如何构建
 ```
 $ npm install
-$ npm start
-```
-
-## 验证JSON格式
-```
-$ npm test
+$ npm run build
 ```
 
 ## License
