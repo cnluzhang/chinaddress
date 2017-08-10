@@ -12,4 +12,9 @@ dir.forEach(file => {
   }
 })
 
+try {
+  fs.mkdirSync('./cache')
+} catch (err) {
+
+}
 fs.writeFileSync('./cache/pingyin.json', JSON.stringify(pingyin, null, 2))

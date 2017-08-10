@@ -4,7 +4,7 @@
   "description": "中国三级地址库",
   "scripts": {
     "build": "node build.js && node build.js --mainland-only",
-    "sync": "node pingyin.js && node extract.js"
+    "extract": "node pingyin.js && node extract.js"
   },
   "repository": {
     "type": "git",
