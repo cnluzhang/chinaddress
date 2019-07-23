@@ -4,7 +4,7 @@
 'use strict';
 const fs = require('fs')
 const jsonConcat = require('json-concat')
-const mainlandOnly = process.argv[2] === '--mainland-only'
+const mainlandOnly = process.argv[2] === '--mainland'
 
 // 按京东的地址选择器顺序排列
 let files = [
@@ -76,9 +76,28 @@ jsonConcat({
     process.exit(1)
     return
   }
+
   console.log('JSON concat success, writing file')
-  json = JSON.stringify(json, null, 2)
-  fs.writeFileSync(dest, json)
+  fs.writeFileSync(dest, JSON.stringify(json, null, 2))
+  fs.writeFileSync(dest.replace('.json', '.min.json'), JSON.stringify(json))
+
+  const jsonArray = []
+  for (const provinceName in json) {
+    const cities = json[provinceName]
+    const citiesArray = []
+    for (const cityName in cities) {
+      citiesArray.push({
+        [cityName]: cities[cityName]
+      })
+    }
+    const province = {
+      [provinceName]: citiesArray
+    }
+    jsonArray.push(province)
+  }
+  fs.writeFileSync(dest.replace('.json', '.array.json'), JSON.stringify(jsonArray, null, 2))
+  fs.writeFileSync(dest.replace('.json', '.array.min.json'), JSON.stringify(jsonArray))
+
   process.exit()
 });
 

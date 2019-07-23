@@ -4,7 +4,7 @@ const https = require('https')
 const fs = require('fs')
 
 let provincesRaw = require('./province.json')
-let citiesRaw = require('./city.json')
+let citiesRaw = require('./city.js')
 let info = require('./cache/pingyin.json')
 let areas = {}
 

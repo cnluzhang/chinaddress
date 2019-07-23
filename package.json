@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "中国三级地址库",
   "scripts": {
-    "build": "node build.js && node build.js --mainland-only",
+    "build": "node build.js && node build.js --mainland",
     "extract": "node pingyin.js && node extract.js"
   },
   "repository": {
