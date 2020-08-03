@@ -1,7 +1,7 @@
 // city.json 及 province.json 来自
 // https://misc.360buyimg.com/jdf/1.0.0/ui/area/1.0.0/area.js
-const https = require('https')
 const fs = require('fs')
+const https = require('https')
 
 const url = 'https://misc.360buyimg.com/jdf/1.0.0/ui/area/1.0.0/area.js'
 
@@ -115,25 +115,13 @@ function getProvincesAndCities() {
 
 function getDistricts(fid) {
   return new Promise((resolve, reject) => {
-    let path = './cache/' + fid
-    attempt(() => {
-      fs.mkdirSync('./cache')
-    })
-    try {
-      if (fs.existsSync(path)) {
-        return resolve(JSON.parse(fs.readFileSync(path).toString()))
-      }
-    } catch (err) {
-      console.error(err)
-    }
     console.log('Fetching %s', fid)
-    https.get(`https://d.jd.com/area/get?fid=${fid}`, res => {
+    https.get(`https://fts.jd.com/area/get?fid=${fid}`, res => {
       let result = ''
       res.on('data', (d) => {
         result += d.toString()
       })
       res.on('end', () => {
-        fs.writeFileSync(path, result)
         resolve(JSON.parse(result))
       })
       res.on('error', reject)
