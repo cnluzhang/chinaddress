@@ -12,8 +12,7 @@ dir.forEach(file => {
   }
 })
 
-try {
+if (!fs.existsSync('./cache')) {
   fs.mkdirSync('./cache')
-} finally {
-  fs.writeFileSync('./cache/pingyin.json', JSON.stringify(pingyin, null, 2))
 }
+fs.writeFileSync('./cache/pingyin.json', JSON.stringify(pingyin, null, 2))
